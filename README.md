@@ -343,3 +343,9 @@ Reported plainly, not buried:
 - **Three seeds is a sanity check, not a rigorous statistical study.** The sybil and
   selective-forwarding findings are consistent across all three; a publication-grade
   claim would run dozens of seeds with confidence intervals.
+
+---
+
+## License
+
+MIT.
