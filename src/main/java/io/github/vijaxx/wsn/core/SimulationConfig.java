@@ -253,6 +253,18 @@ public final class SimulationConfig {
             if (initialEnergy <= 0) {
                 throw new IllegalArgumentException("initialEnergy must be > 0");
             }
+            if (attackerFraction < 0 || attackerFraction > 1) {
+                throw new IllegalArgumentException("attackerFraction must be in [0,1]");
+            }
+            if (jammingSuccessProbability < 0 || jammingSuccessProbability > 1) {
+                throw new IllegalArgumentException("jammingSuccessProbability must be in [0,1]");
+            }
+            if (selectiveDropProbability < 0 || selectiveDropProbability > 1) {
+                throw new IllegalArgumentException("selectiveDropProbability must be in [0,1]");
+            }
+            if (blacklistThreshold <= 0) {
+                throw new IllegalArgumentException("blacklistThreshold must be > 0");
+            }
             return new SimulationConfig(this);
         }
     }
