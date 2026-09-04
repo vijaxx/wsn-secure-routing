@@ -258,7 +258,7 @@ export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"   # OpenJDK is keg-only on thi
 java -version   # confirm JDK 17+
 mvn -version
 
-mvn clean test                                       # 71 tests, real crypto included
+mvn clean test                                       # 76 tests, real crypto included
 mvn -q package -DskipTests
 java -jar target/wsn-secure-routing-1.0.0.jar 60 42 results/comparison.csv
 ```
@@ -285,13 +285,13 @@ src/main/java/io/github/vijaxx/wsn/
               SelectiveForwardingAttacker, NoAttacker, AttackType
   protocol/   WsnSimulator (the engine), SecurityMode, SimulationResult, CryptoStats
   cli/        Main, ResultsCsvWriter
-src/test/java/...                 71 JUnit 5 tests, mirrored package layout
+src/test/java/...                 76 JUnit 5 tests, mirrored package layout
 results/                          committed CSVs backing the numbers in this README
 ```
 
 ## Testing
 
-`mvn clean test` runs 71 tests with no skips and no mocks around the cryptography —
+`mvn clean test` runs 76 tests with no skips and no mocks around the cryptography —
 every RSA/AES/interlock test exercises the real JCA/JCE providers. Coverage includes:
 
 - energy-model arithmetic checked against hand-computed values (free-space and
