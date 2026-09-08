@@ -86,6 +86,15 @@ class SimulationConfigTest {
     }
 
     @Test
+    void rejectsNegativeJammingRadius() {
+        // Same failure class as selectiveDropProbability above: JammingAttacker
+        // checks `dist <= jammingRadius`, and dist is never negative, so a
+        // negative radius silently turned jamming off instead of erroring.
+        assertThrows(IllegalArgumentException.class,
+                () -> SimulationConfig.builder().jammingRadius(-1.0).build());
+    }
+
+    @Test
     void rejectsNonPositiveBlacklistThreshold() {
         assertThrows(IllegalArgumentException.class,
                 () -> SimulationConfig.builder().blacklistThreshold(0).build());

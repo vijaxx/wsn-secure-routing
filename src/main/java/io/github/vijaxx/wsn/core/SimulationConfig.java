@@ -256,6 +256,9 @@ public final class SimulationConfig {
             if (attackerFraction < 0 || attackerFraction > 1) {
                 throw new IllegalArgumentException("attackerFraction must be in [0,1]");
             }
+            if (jammingRadius < 0) {
+                throw new IllegalArgumentException("jammingRadius must be >= 0");
+            }
             if (jammingSuccessProbability < 0 || jammingSuccessProbability > 1) {
                 throw new IllegalArgumentException("jammingSuccessProbability must be in [0,1]");
             }
