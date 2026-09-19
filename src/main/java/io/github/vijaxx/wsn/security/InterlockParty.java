@@ -55,10 +55,11 @@ import java.util.Arrays;
  * <p><b>Honest scoping.</b> With CA-certified keys, signature checking alone already stops a
  * key-substituting MITM; interlock's independent contribution is against the
  * <em>relay-and-splice</em> adversary who never has to author content, and against
- * deployments where certificates are unavailable. In that uncertified mode interlock does
- * not raise an exception, but it does force the attacker to inject content she invented
- * before seeing the genuine message; {@link MitmAdversary} exercises and asserts exactly
- * that difference. See the README.
+ * deployments where certificates are unavailable. In that uncertified mode a substituted
+ * peer key is still caught -- via the embedded {@code H(peerPublicKeyAsSeen)} digest, not
+ * an interlock-ordering exception -- which is what
+ * {@code InterlockPartyTest#keyViewMismatchDetectsASubstitutedPeerKeyInUncertifiedMode}
+ * exercises and asserts. See the README.
  */
 public final class InterlockParty {
 
