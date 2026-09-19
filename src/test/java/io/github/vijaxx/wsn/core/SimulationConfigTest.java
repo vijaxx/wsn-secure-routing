@@ -101,4 +101,19 @@ class SimulationConfigTest {
         assertThrows(IllegalArgumentException.class,
                 () -> SimulationConfig.builder().blacklistThreshold(-1).build());
     }
+
+    @Test
+    void rejectsNonPositiveFieldDimensions() {
+        // Node placement is rng.nextDouble() * fieldWidth (and * fieldHeight), so
+        // a width/height of 0 silently collapsed every node onto that axis instead
+        // of erroring, and a negative value placed nodes at negative coordinates.
+        assertThrows(IllegalArgumentException.class,
+                () -> SimulationConfig.builder().field(0, 100).build());
+        assertThrows(IllegalArgumentException.class,
+                () -> SimulationConfig.builder().field(100, 0).build());
+        assertThrows(IllegalArgumentException.class,
+                () -> SimulationConfig.builder().field(-10, 100).build());
+        assertThrows(IllegalArgumentException.class,
+                () -> SimulationConfig.builder().field(100, -10).build());
+    }
 }

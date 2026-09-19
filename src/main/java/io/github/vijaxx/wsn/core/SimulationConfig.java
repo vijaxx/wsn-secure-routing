@@ -241,6 +241,12 @@ public final class SimulationConfig {
             if (nodeCount <= 0) {
                 throw new IllegalArgumentException("nodeCount must be > 0");
             }
+            if (fieldWidth <= 0) {
+                throw new IllegalArgumentException("fieldWidth must be > 0");
+            }
+            if (fieldHeight <= 0) {
+                throw new IllegalArgumentException("fieldHeight must be > 0");
+            }
             if (clusterHeadProbability <= 0 || clusterHeadProbability >= 1) {
                 throw new IllegalArgumentException("clusterHeadProbability must be in (0,1)");
             }
